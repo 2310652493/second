@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jc.dao.CommodityMapper">
+    <select id="FindAll" resultType="commodity">
+        select cid,cname,price,imgs from commodity
+    </select>
+    <insert id="AddCom" parameterType="commodity">
+        insert into commodity (cname,price,imgs) values (#{cname},#{price},#{imgs})
+    </insert>
+    <delete id="Delete" parameterType="int">
+        delete from commodity where cid=#{0}
+    </delete>
+    <select id="FindById" parameterType="int" resultType="commodity">
+        select cid,cname,price,imgs from commodity where cid=#{cid}
+    </select>
+    <update id="Update" parameterType="commodity">
+        update commodity set cname=#{cname},price=#{price},imgs=#{imgs}
+    </update>
+</mapper>
